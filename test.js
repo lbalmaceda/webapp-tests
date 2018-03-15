@@ -38,7 +38,7 @@ async function run() {
 
   //Wait for the Quickstart Home Page
   await page.waitForSelector("#qsLogoutBtn", {visible:true, timeout:5000});
-  await page.screenshot({path:"out/sample.jpeg", type: "png", quality:50})
+  await page.screenshot({path:"out/sample.jpeg", type: "jpeg", quality:30})
 
   await browser.close();
 }
