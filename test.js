@@ -6,7 +6,12 @@ const TEST_EMAIL = process.env.TEST_EMAIL || "asd@asd.asd";
 const TEST_PASSWORD = process.env.TEST_PASSWORD || "asdasd";
 
 async function run() {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
+    ]
+  });
   const page = await browser.newPage();
   
   //Open the QuickStart Home page
@@ -38,7 +43,7 @@ async function run() {
 
   //Wait for the Quickstart Home Page
   await page.waitForSelector("#qsLogoutBtn", {visible:true, timeout:5000});
-  await page.screenshot({path:"out/sample.jpeg", type: "jpeg", quality:30})
+  await page.screenshot({path:"out/sample.png"})
 
   await browser.close();
 }
