@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const fs = require('fs');
 
 const WEBAPP_URL = process.env.WEBAPP_URL || "http://localhost:3000";
 const TEST_USERNAME = process.env.TEST_USERNAME || "asdasd";
@@ -16,6 +17,7 @@ async function run() {
   
   //Open the QuickStart Home page
   await page.goto(WEBAPP_URL);
+
 
   try {
     //Check if already logged in
@@ -43,6 +45,8 @@ async function run() {
 
   //Wait for the Quickstart Home Page
   await page.waitForSelector("#qsLogoutBtn", {visible:true, timeout:5000});
+  
+  fs.mkdirSync("out");
   await page.screenshot({path:"out/sample.png"})
 
   await browser.close();
