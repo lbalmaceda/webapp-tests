@@ -4,25 +4,20 @@ services:
     build: ./sample
     expose:
       - 3000
-    ports:
-      - 3000:3000
-    network_mode: "host"
       
   waiter1:
     image: waisbrot/wait
     environment:
-      - TARGETS=localhost:3000
+      - TARGETS=app:3000
       - TIMEOUT=300
-    network_mode: "host"
     depends_on:
       - app
 
   waiter2:
     image: lbalmaceda/url-wait
     environment:
-      - URL=localhost:3000
+      - URL=app:3000
       - TIMEOUT=300
-    network_mode: "host"
     depends_on:
       - app
 
@@ -31,6 +26,5 @@ services:
     depends_on: 
       - waiter1
       - waiter2
-    network_mode: "host"
     environment:
-      - WEBAPP_URL=localhost:3000
+      - WEBAPP_URL=app:3000
