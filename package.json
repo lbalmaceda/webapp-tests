@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "codeceptjs": "^1.1.7",
     "puppeteer": "^1.1.0"
   },
-  "devDependencies": {
-    "codeceptjs": "^1.1.7"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/codeceptjs run-multiple --all"
   },
   "keywords": [],
   "author": "",

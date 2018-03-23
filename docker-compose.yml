@@ -22,7 +22,7 @@ services:
       - app
 
   tester:
-    image: alekzonder/puppeteer
+    image: codeception/codeceptjs
     depends_on: 
       - waiter1
       - waiter2
